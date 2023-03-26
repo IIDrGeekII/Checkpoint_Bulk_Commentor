@@ -1,6 +1,6 @@
 ## Checkpoint_Bulk_Commentor
 
-This program is a shell script written in Bash, a Unix shell that runs in a command-line interface (CLI). The program aims to automate the task of checking and and printing bulk comment on all the non-commented rules within a Check Point firewall using API. 
+This program is a shell script written in Bash, a Unix shell that runs in a command-line interface (CLI). The program aims to automate the task of checking and printing bulk comment on all the non-commented rules within a Check Point firewall using API. 
 
 This script is tested on R80+ and R81+ series GAIA OS.
 
