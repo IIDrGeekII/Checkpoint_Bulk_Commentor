@@ -23,7 +23,7 @@ cleanup() {
 ###############################################################################################
 ###############################################################################################
 
-Spinner for sleep:
+#Spinner for sleep:
 
 spinner () {
     local chars=('|' / - '\')
@@ -216,9 +216,16 @@ read password
 # Enable local echo again
 stty echo
 printf "\n"
-spin=$(printf "${CYAN}\nCreating session...${END}")
+spin=$(printf "${CYAN}\nCreating session ...${END}")
 copy
-mkdir ~/junk
+# Define the folder name you're looking for
+folder="junk"
+
+# Check if the folder exists
+if [ ! -d "$folder" ]; then
+  # Folder doesn't exist, create it
+  mkdir "$folder"
+fi
 mgmt_cli login user "$username" password "$password" > ~/junk/session
 input=$(grep -o "\S*" ~/junk/session | grep -i "sid" | sed "s/://g")
 #sleep 3
@@ -227,8 +234,11 @@ if [ "$input" = "sid" ]; then
 printf "${YELLOW}\nSession created successfully.\n${END}"
 printf "${MAGENTA}\n`grep -i "sid\|uid" ~/junk/session | grep -v "user-uid"`\n${END}"
 session=$(echo ~/junk/session)
-spin=$(printf "${CYAN}\nScanning database...${END}")
+spin=$(printf "${CYAN}\nScanning database ...${END}")
 copy
+#sleep 7
+printf "${YELLOW}\nDatabase scanned successfully.\n${END}"
+sleep 0.5
 fi
 
 if [ "$input" != "sid" ]; then
@@ -318,4 +328,6 @@ quit
 
 ###############################################################################################
 ###############################################################################################
+
+
 
