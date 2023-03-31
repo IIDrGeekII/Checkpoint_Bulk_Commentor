@@ -49,7 +49,7 @@ After providing the comment it then executes the "mgmt_cli" API command to print
 
 ![image](https://user-images.githubusercontent.com/75925433/226101997-d4147d62-d608-4f02-ac9c-0b2e1c74c3d1.png)
 
-he user is then prompted to select one of the following options:
+The user is then prompted to select one of the following options:
 
 ```
     1. Publish
