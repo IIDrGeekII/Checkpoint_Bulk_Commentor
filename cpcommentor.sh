@@ -17,7 +17,7 @@ YELLOW="\033[33m"
 ###############################################################################################
 
 cleanup() {
-        rm -rf ~/junk > /dev/null
+        rm -rf ./junk > /dev/null
   }
 
 ###############################################################################################
@@ -226,24 +226,25 @@ if [ ! -d "$folder" ]; then
   # Folder doesn't exist, create it
   mkdir "$folder"
 fi
-mgmt_cli login user "$username" password "$password" > ~/junk/session
-input=$(grep -o "\S*" ~/junk/session | grep -i "sid" | sed "s/://g")
+mgmt_cli login user "$username" password "$password" > ./junk/session
+input=$(grep -o "\S*" ./junk/session | grep -i "sid" | sed "s/://g")
 #sleep 3
 if [ "$input" = "sid" ]; then
 
 printf "${YELLOW}\nSession created successfully.\n${END}"
-printf "${MAGENTA}\n`grep -i "sid\|uid" ~/junk/session | grep -v "user-uid"`\n${END}"
-session=$(echo ~/junk/session)
+printf "${MAGENTA}\n`grep -i "sid\|uid" ./junk/session | grep -v "user-uid"`\n${END}"
+session=$(echo ./junk/session)
 spin=$(printf "${CYAN}\nScanning database ...${END}")
 copy
 #sleep 7
 printf "${YELLOW}\nDatabase scanned successfully.\n${END}"
 sleep 0.5
+echo ""
 fi
 
 if [ "$input" != "sid" ]; then
 
-printf "${RED}\n`grep -i "message" ~/junk/session`\n${END}"
+printf "${RED}\n`grep -i "message" ./junk/session`\n${END}"
 printf "\n${RED}Exiting with error..\n${END}"
 sleep 3
 printf "\n${RED}Please try again by running the script with correct credentials.\n${END}"
